@@ -8,6 +8,7 @@ const projectModel = (sequelize, Sequelize) => {
     parentId: {
       type: Sequelize.STRING,
       allowNull: true,
+      defaultValue:null
     },
     order: {
       type: Sequelize.INTEGER,
@@ -16,8 +17,7 @@ const projectModel = (sequelize, Sequelize) => {
     },
     color: {
       type: Sequelize.STRING,
-      allowNull: false,
-      defaultValue: "white",
+      defaultValue: null,
     },
     name: {
       type: Sequelize.STRING,

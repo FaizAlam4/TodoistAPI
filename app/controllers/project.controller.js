@@ -2,7 +2,6 @@ import db from "../models/index.js";
 import { v4 as uuidv4 } from "uuid";
 
 const Project = db.projects;
-const Op = db.Sequelize.Op;
 
 export const findProjectAll = (req, res) => {
   Project.findAll()
@@ -29,7 +28,7 @@ export const findProjectById = (req, res) => {
 };
 
 export const createProject = (req, res) => {
-  if (!req.body.name) {
+  if (!req.body.name && req.body.name.trim() == "") {
     res.status(400).send({ message: "Project should have a title" });
   }
 
@@ -64,6 +63,6 @@ export const deleteProject = (req, res) => {
       }
     })
     .catch((err) => {
-      res.send({message:`Could not delete the project with id=${id}`});
+      res.send({ message: `Could not delete the project with id=${id}` });
     });
 };

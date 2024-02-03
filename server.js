@@ -3,6 +3,8 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import db from "./app/models/index.js";
 import router from "./app/routes/project.routes.js";
+import taskRouter from "./app/routes/task.routes.js";
+
 const app = express();
 
 app.use(express.json());
@@ -23,6 +25,7 @@ db.sequelize
     console.log(err);
   });
 app.use("/rest/v2/projects", router);
+app.use("/rest/v2/tasks", taskRouter);
 
 db.sequelize
   .authenticate()
